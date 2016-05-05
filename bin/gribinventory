@@ -1,0 +1,49 @@
+#!/usr/bin/env python2.7
+from __future__ import absolute_import
+from gribinventory.base import GribInventory
+
+import argparse
+
+parser = argparse.ArgumentParser(description='gribinventory.')
+parser.add_argument('--model', type=str, dest='model',
+                   help='Model', default="")
+parser.add_argument('--variables', dest='vars', type=str,
+                   help='Comma seperated list of LEVEL:VARNAME. ie. \
+                   PRMSL:mean sea level,HGT:500 mb', default="")
+parser.add_argument('--fhours', dest='fhours', type=str,
+                   help='Path to save model files', default="")
+parser.add_argument('--savepath', dest='savepath', type=str,
+                   help='Path to save model files', default="")
+
+parser.add_argument('--run', dest='run', type=str,
+                   help='Model Run YYYYMMDDZZ', default="")
+
+parser.add_argument('-t', dest='t', action='store_true',
+                   help='Enable multithreading.')
+
+args = vars(parser.parse_args())
+vars = []
+model = ""
+savepath = ""
+run = args['run']
+threads = args['t']
+hours = []
+
+if len(args['model']) < 1:
+    print("Model required.")
+    exit(1)
+else:
+    model = args['model']
+
+if len(args['savepath']) > 1:
+    savepath = args['savepath']
+
+if len(args['vars']) > 1:
+    vars = args['vars'].split(',')
+
+if len(args['fhours']) > 1:
+    fhours = list(map(int, args['fhours'].split(',')))
+
+grbs = GribInventory(model, vars, fhours, enableThreading=True)
+grbs.download(savepath)
+
