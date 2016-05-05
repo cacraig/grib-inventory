@@ -4,7 +4,7 @@ GribInventory is a tool that piggybacks off of the range headers supported by ht
 This allows a user to quickly pull a small subset grib2 files of global/regional/expiremental model data hosted by NOAA. 
   
 Compatible with Python3 only atm.  
-  
+
 Currently supported models:  
 gfs - (GFS 0.25 degree)  
 nam - (NAM model 12km resolution)  
@@ -35,7 +35,7 @@ Example:
 gribinventory  
   --model nam4km  
   --savepath gribdata/nam4km  
-  --variables "DPT:850 mb, ABSV:500 mb"  
+  --variables "DPT:850 mb,ABSV:500 mb"  
   --fhours 01,02,03,15,21   
   -t  
 ```
