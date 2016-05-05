@@ -190,8 +190,6 @@ class GribInventory:
     if self.model.getForecastHourInt(fileName) not in self.forecastHours:
       return
 
-    downloadFilteredFile
-
     byteRangeStr = self.getByteRangesAsString(fileName)
     req = urllib2.Request(self.model.getDataUrl() + fileName)
     req.headers['Range']='bytes=' + byteRangeStr
