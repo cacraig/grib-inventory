@@ -1,7 +1,7 @@
 ## Grib Inventory v.0.0.2
 
 GribInventory is a tool that piggybacks off of the range headers supported by http://nomads.ncep.noaa.gov/.
-This allows a user to quickly pull a small subset grib2 files of global/regional/expiremental model data hosted by NOAA. 
+This allows a user to quickly pull subsets grib2 files of global/regional/expiremental model data hosted by NOAA. 
   
 Compatible with Python3 only atm.  
 
