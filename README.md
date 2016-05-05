@@ -21,7 +21,7 @@ gribinventory
 
 Usage - CLI:
 ```bash
-# Defaults to all level:variables, and forecast hours if no args are passed in.
+# Defaults to all variable:level combinations, and forecast hours if no args are passed in.
 gribinventory 
   --model [Required - model name]  
   --savepath [output file path]  
