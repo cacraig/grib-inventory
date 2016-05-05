@@ -21,8 +21,9 @@ gribinventory
 
 Usage - CLI:
 ```bash
+# Defaults to all level:variables, and forecast hours if no args are passed in.
 gribinventory 
-  --model [model name]  
+  --model [Required - model name]  
   --savepath [output file path]  
   --variables [Comma seperated list of desired grib2 variables - ie. LEVEL:VARIABLE,LEVEL:VARIABLE,...]  
   --fhours [Comma seperated list of forecast hours-steps to download]  
@@ -44,10 +45,15 @@ Usage - Module:
 ```bash
 from gribinventory.base import GribInventory
 
-grbs = GribInventory(model, vars, fhours, enableThreading=True)
+model = 'nam'
+vars  = []             # All default vars
+fhours = ['03','06']   # 3rd, and 6th hour of the current run.
+enableThreading = True # Use multiple threads. 
+
+# Defaults to all level:variables, and forecast hours if no args.
+grbs = GribInventory(model, vars, fhours, enableThreading)
 
 grbs.download()
-
 
 ```
 See: http://www.nco.ncep.noaa.gov/pmb/products/ for available levels:variables for each model.
