@@ -29,7 +29,7 @@ gribinventory
   --fhours [Comma seperated list of forecast hours-steps to download]  
   -t [Option: enable Multi-threading.]  
 ```
-See: http://www.nco.ncep.noaa.gov/pmb/products/ for available levels:variables for each model.
+See: http://www.nco.ncep.noaa.gov/pmb/products/ for available variable:level for each model.
 
 Example:
 ```bash
@@ -50,13 +50,13 @@ vars  = []             # All default vars
 fhours = ['03','06']   # 3rd, and 6th hour of the current run.
 enableThreading = True # Use multiple threads. 
 
-# Defaults to all level:variables, and forecast hours if no args.
+# Defaults to all variable:level, and forecast hours if no args.
 grbs = GribInventory(model, vars, fhours, enableThreading)
 
 grbs.download()
 
 ```
-See: http://www.nco.ncep.noaa.gov/pmb/products/ for available levels:variables for each model.
+See: http://www.nco.ncep.noaa.gov/pmb/products/ for available variable:level for each model.
 
 Example:
 ```bash
