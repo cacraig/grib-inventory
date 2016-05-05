@@ -48,6 +48,7 @@ class GribInventory:
   @return void
   '''''
   def __init__(self, model, vars=[], forecastHours=[], enableThreading=True, run=""):
+
     # { ..., fileName: '100-200,500-600,800-1100,...', ...}
     self.byteRanges = {}
     self.model = self.getModelObj(model)
@@ -127,11 +128,15 @@ class GribInventory:
       parts     = line.split(':')
       varName   = parts[3] + ':' + parts[4]
       bytePoint = parts[1]
-      if varName in self.model.gribVars and not varFound:
+
+      # Strip spaces for simpler lookup.
+      varName = varName.replace(" ", "")
+
+      if varName in self.model.getGribVars() and not varFound:
         byteStart = bytePoint
         varFound = True
 
-      if varName not in self.model.gribVars and varFound:
+      if varName not in self.model.getGribVars() and varFound:
         byteEnd = bytePoint
         byteRanges.append((byteStart,byteEnd))
         varFound = False

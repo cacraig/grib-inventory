@@ -27,7 +27,7 @@ model = ""
 savepath = ""
 run = args['run']
 threads = args['t']
-hours = []
+fhours = []
 
 if len(args['model']) < 1:
     print("Model required.")

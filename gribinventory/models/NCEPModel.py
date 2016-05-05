@@ -211,6 +211,10 @@ class NCEPModel:
     fhour = self.getForecastHour(filename, noPrefix)
     return int(fhour[1:])
 
+  def getGribVars(self):
+    stripSpaces = lambda x: x.replace(" ", "")
+    return list(map(stripSpaces, self.gribVars))
+
   def getName(self):
     return self.name
 
